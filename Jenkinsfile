@@ -32,6 +32,7 @@ pipeline {
 	        docker {
                     image 'eeacms/pylint'
  		}
+	    }
             environment { 
                 VOLUME = '$(pwd)/sources:/test_calc.py'
                 IMAGE = 'eeacms/pylint'
