@@ -38,7 +38,7 @@ pipeline {
                 IMAGE = 'eeacms/pylint'
             }
             steps { 
-                sh "docker run --rm -v ${VOLUME} ${IMAGE}" 
+                sh "pylint ${VOLUME}" 
             }
         }
     }
