@@ -27,5 +27,21 @@ pipeline {
                 }
             }
         }
+        stage('Lint') { 
+            agent {
+	        docker {
+                    image 'eeacms/pylint'
+ 		}
+            environment { 
+                VOLUME = '$(pwd)/sources:/test_calc.py'
+                IMAGE = 'eeacms/pylint'
+            }
+            steps {
+                dir(path: env.BUILD_ID) { 
+                    unstash(name: 'compiled-results') 
+                    sh "docker run --rm -v ${VOLUME} ${IMAGE}" 
+                }
+            }
+        }
     }
 }
