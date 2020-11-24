@@ -34,7 +34,7 @@ pipeline {
  		}
 	    }
             environment { 
-                VOLUME = '$(pwd)/sources:/calc.py'
+                VOLUME = '$(pwd)/sources/calc.py'
                 IMAGE = 'eeacms/pylint'
             }
             steps { 
