@@ -37,8 +37,10 @@ pipeline {
                 VOLUME = '$(pwd)/sources/calc.py'
                 IMAGE = 'eeacms/pylint'
             }
-            steps { 
-                sh "pylint ${VOLUME}" 
+            steps {
+	        withEnv(['PYLINTHOME=.']) {
+                    sh "pylint ${VOLUME}"
+		}
             }
         }
     }
